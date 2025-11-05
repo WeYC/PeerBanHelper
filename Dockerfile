@@ -19,7 +19,7 @@ WORKDIR /build
 COPY --from=build_web webui/dist src/main/resources/static
 RUN mvn -B clean package --file pom.xml -T 1.5C -P thin-sqlite-packaging
 
-FROM docker.io/bellsoft/liberica-runtime-container:jre-21-slim-musl
+FROM arm32v7/eclipse-temurin:21-jre AS runtime
 LABEL maintainer="https://github.com/PBH-BTN/PeerBanHelper"
 USER 0
 EXPOSE 9898
